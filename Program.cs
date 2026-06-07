@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
+using System.Text.Json;
 
-class Program
+class ProgramToDoList
 {
     static void Main(string[] args)
     {
@@ -25,6 +27,55 @@ class Program
                     tarefas.Add(tarefa);
                 }
             }
+        }
+
+        List<Login> usuarios = new();
+
+        if (File.Exists("usuarios.json"))
+        {
+            string json = File.ReadAllText("usuarios.json");
+            usuarios = JsonSerializer.Deserialize<List<Login>>(json) ?? new();
+        }
+
+        Console.WriteLine("Você tem uma conta? (s/n)");
+        string respostas = Console.ReadLine() ?? "";
+
+        if (respostas.ToLower() == "s")
+        {
+            Console.WriteLine("Digite seu email:");
+            string email = Console.ReadLine() ?? "";
+            Console.WriteLine("Digite sua senha:");
+            string senha = Console.ReadLine() ?? "";
+
+            Login? login = usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+
+            if (login == null)
+            {
+                Console.WriteLine("Email ou senha inválidos.");
+                return;
+            }
+        }
+
+        else
+        {
+            Console.WriteLine("Vamos criar uma conta para você.");
+
+            Console.WriteLine("Digite seu nome:");
+            string nome = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Digite seu email:");
+            string email = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Digite sua senha:");
+            string senha = Console.ReadLine() ?? "";
+
+            Login novoLogin = new Login(email, senha);
+            usuarios.Add(novoLogin);
+
+            string json = JsonSerializer.Serialize(usuarios);
+            File.WriteAllText("usuarios.json", json);
+
+            Console.WriteLine($"Conta criada com sucesso! Bem-vindo, {novoLogin.Email}!");
         }
 
         Console.WriteLine("Bem-vindo a To-Do List!");
@@ -89,15 +140,5 @@ class Program
         Console.WriteLine("Comando desconhecido. Digite 'help' para ver os comandos disponíveis.");
     }
 }
-
-    static void SalvarTarefas(Tarefa[] tarefas)
-    {
-        File.WriteAllLines(
-            "tarefas.txt",
-            tarefas
-                .Where(t => t != null)
-                .Select(t => $"{t.Concluida}|{t.Descricao}")
-        );
     }
-}
 }
