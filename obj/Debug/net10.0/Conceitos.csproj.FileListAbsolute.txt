@@ -1,0 +1,14 @@
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.exe
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.deps.json
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.runtimeconfig.json
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.dll
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.pdb
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.AssemblyInfoInputs.cache
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.AssemblyInfo.cs
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.csproj.CoreCompileInputs.cache
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.dll
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\refint\Conceitos.dll
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.pdb
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.genruntimeconfig.cache
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\ref\Conceitos.dll
