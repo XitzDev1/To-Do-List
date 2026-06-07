@@ -8,7 +8,7 @@ class Program
     {
         Console.WriteLine("Main executado com sucesso!");
 
-        Tarefa[]? Tarefas = new Tarefa[100];
+        List<Tarefa> tarefas = new();
 
         if (File.Exists("tarefas.txt"))
         {
@@ -20,141 +20,60 @@ class Program
 
                 if (partes.Length == 2)
                 {
-                    Tarefas[i] = new Tarefa(partes[1]);
-                    Tarefas[i].Concluida = bool.Parse(partes[0]);
+                    Tarefa tarefa = new Tarefa(partes[1]);
+                    tarefa.Concluida = bool.Parse(partes[0]);
+                    tarefas.Add(tarefa);
                 }
             }
         }
 
         Console.WriteLine("Bem-vindo a To-Do List!");
         Console.WriteLine("Digite 'help' para ver os comandos.");
+        TarefaService tarefaService = new TarefaService();
 
         while (true)
+{
+    Console.Write("> ");
+    string resposta = Console.ReadLine() ?? "";
+
+    if (resposta == "add")
+    {
+        Console.Write("Descrição: ");
+        string descricao = Console.ReadLine() ?? "";
+
+        tarefaService.AdicionarTarefa(descricao);
+    }
+
+    else if (resposta == "list")
+    {
+        tarefaService.ListarTarefas();
+    }
+
+    else if (resposta == "remove")
+    {
+        Console.Write("Número da tarefa: ");
+
+        if (int.TryParse(Console.ReadLine(), out int numero))
         {
-            Console.Write("> ");
-            string resposta = Console.ReadLine() ?? "";
-
-            if (resposta == "help")
-            {
-                Console.WriteLine("Comandos disponíveis:");
-                Console.WriteLine("help     - Exibe esta mensagem");
-                Console.WriteLine("add      - Adiciona uma tarefa");
-                Console.WriteLine("list     - Lista as tarefas");
-                Console.WriteLine("remove   - Remove uma tarefa");
-                Console.WriteLine("complete - Marca uma tarefa como concluída");
-                Console.WriteLine("exit     - Sai do programa");
-            }
-
-            else if (resposta == "add")
-            {
-                Console.WriteLine("Digite a tarefa:");
-                string novaTarefa = (Console.ReadLine() ?? "").Trim();
-
-                if (string.IsNullOrWhiteSpace(novaTarefa))
-                {
-                    Console.WriteLine("A tarefa não pode estar vazia.");
-                    continue;
-                }
-
-                for (int i = 0; i < Tarefas.Length; i++)
-                {
-                    if (Tarefas[i] == null)
-                    {
-                        Tarefas[i] = new Tarefa(novaTarefa);
-                        Console.WriteLine("Tarefa adicionada com sucesso!");
-                        SalvarTarefas(Tarefas);
-                        break;
-                    }
-                }
-            }
-
-            else if (resposta == "list")
-            {
-                Console.WriteLine("Tarefas:");
-
-                for (int i = 0; i < Tarefas.Length; i++)
-                {
-                    if (Tarefas[i] != null)
-                    {
-                        string status = Tarefas[i].Concluida ? "[X]" : "[ ]";
-
-                        Console.WriteLine(
-                            $"{i + 1}. {status} {Tarefas[i].Descricao}"
-                        );
-                    }
-                }
-            }
-
-            else if (resposta == "remove")
-            {
-                Console.WriteLine("Digite o número da tarefa:");
-
-                if (int.TryParse(Console.ReadLine(), out int numeroTarefa))
-                {
-                    if (numeroTarefa > 0 &&
-                        numeroTarefa <= Tarefas.Length &&
-                        Tarefas[numeroTarefa - 1] != null)
-                    {
-                        Tarefas[numeroTarefa - 1] = null;
-
-                        Console.WriteLine("Tarefa removida com sucesso!");
-
-                        SalvarTarefas(Tarefas);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Número de tarefa inválido.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Digite um número válido.");
-                }
-            }
-
-            else if (resposta == "complete")
-            {
-                Console.WriteLine("Digite o número da tarefa:");
-
-                if (int.TryParse(Console.ReadLine(), out int numeroTarefa))
-                {
-                    if (numeroTarefa > 0 &&
-                        numeroTarefa <= Tarefas.Length &&
-                        Tarefas[numeroTarefa - 1] != null)
-                    {
-                        Tarefas[numeroTarefa - 1].Concluida = true;
-
-                        Console.WriteLine(
-                            "Tarefa marcada como concluída!"
-                        );
-
-                        SalvarTarefas(Tarefas);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Número de tarefa inválido.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Digite um número válido.");
-                }
-            }
-
-            else if (resposta == "exit")
-            {
-                SalvarTarefas(Tarefas);
-                break;
-            }
-
-            else
-            {
-                Console.WriteLine(
-                    "Comando desconhecido. Digite 'help'."
-                );
-            }
+            tarefaService.RemoverTarefa(numero);
         }
     }
+
+    else if (resposta == "complete")
+    {
+        Console.Write("Número da tarefa: ");
+
+        if (int.TryParse(Console.ReadLine(), out int numero))
+        {
+            tarefaService.CompletarTarefa(numero);
+        }
+    }
+
+    else if (resposta == "exit")
+    {
+        break;
+    }
+}
 
     static void SalvarTarefas(Tarefa[] tarefas)
     {
@@ -165,4 +84,5 @@ class Program
                 .Select(t => $"{t.Concluida}|{t.Descricao}")
         );
     }
+}
 }
