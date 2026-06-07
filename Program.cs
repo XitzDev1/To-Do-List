@@ -73,6 +73,21 @@ class Program
     {
         break;
     }
+    
+    else if (resposta == "help")
+    {
+        Console.WriteLine("Comandos disponíveis:");
+        Console.WriteLine("add - Adicionar uma nova tarefa");
+        Console.WriteLine("list - Listar todas as tarefas");
+        Console.WriteLine("remove - Remover uma tarefa pelo número");
+        Console.WriteLine("complete - Marcar uma tarefa como concluída pelo número");
+        Console.WriteLine("exit - Sair do programa");
+    }
+
+    else
+    {
+        Console.WriteLine("Comando desconhecido. Digite 'help' para ver os comandos disponíveis.");
+    }
 }
 
     static void SalvarTarefas(Tarefa[] tarefas)

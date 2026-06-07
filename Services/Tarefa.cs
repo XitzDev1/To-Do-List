@@ -28,7 +28,7 @@ public class TarefaService
 
     public void ListarTarefas()
     {
-        if (tarefas.Count == 0)
+        if (tarefas.Count == 0 || tarefas == null)
         {
             Console.WriteLine("Nenhuma tarefa cadastrada.");
             return;
