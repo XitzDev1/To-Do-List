@@ -35,3 +35,4 @@ C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\usuarios.json

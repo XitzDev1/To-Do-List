@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
 
 public class TarefaService
@@ -10,67 +8,56 @@ public class TarefaService
     public TarefaService(string arquivoTarefas)
     {
         this.arquivoTarefas = arquivoTarefas;
-        tarefas = new List<Tarefa>();
+
+        if (File.Exists(arquivoTarefas))
+        {
+            string json = File.ReadAllText(arquivoTarefas);
+
+            tarefas = JsonSerializer.Deserialize<List<Tarefa>>(json)
+                      ?? new List<Tarefa>();
+        }
+        else
+        {
+            tarefas = new List<Tarefa>();
+        }
     }
 
     public void AdicionarTarefa(string descricao)
     {
         tarefas.Add(new Tarefa(descricao));
-        Console.WriteLine("Tarefa adicionada com sucesso!");
-        SalvarTarefas(tarefas.ToArray());
-    }
-
-    private void SalvarTarefas(Tarefa[] tarefas)
-    {
-        string json = JsonSerializer.Serialize(tarefas);
-        File.WriteAllText(arquivoTarefas, json);
+        Salvar();
     }
 
     public void ListarTarefas()
     {
-        if (tarefas.Count == 0 || tarefas == null)
+        if (tarefas.Count == 0)
         {
             Console.WriteLine("Nenhuma tarefa cadastrada.");
             return;
         }
 
-        Console.WriteLine("Tarefas:");
         for (int i = 0; i < tarefas.Count; i++)
         {
-            var tarefa = tarefas[i];
-            if (tarefa != null)
-            {
-                string status = tarefa.Concluida ? "Concluída" : "Pendente";
-                Console.WriteLine($"{i + 1}. [{status}] {tarefa.Descricao}");
-            }
-        }
-}
-
-    public void RemoverTarefa(int numeroTarefa)
-    {
-        if (numeroTarefa > 0 && numeroTarefa <= tarefas.Count && tarefas[numeroTarefa - 1] != null)
-        {
-            tarefas.RemoveAt(numeroTarefa - 1);
-            Console.WriteLine("Tarefa removida com sucesso!");
-            SalvarTarefas(tarefas.ToArray());
-        }
-        else
-        {
-            Console.WriteLine("Número de tarefa inválido.");
+            var t = tarefas[i];
+            Console.WriteLine($"{i + 1}. [{(t.Concluida ? "Concluída" : "Pendente")}] {t.Descricao}");
         }
     }
 
-    public void CompletarTarefa(int numeroTarefa)
+    public void RemoverTarefa(int index)
     {
-        if (numeroTarefa > 0 && numeroTarefa <= tarefas.Count && tarefas[numeroTarefa - 1] != null)
-        {
-            tarefas[numeroTarefa - 1].Concluida = true;
-            Console.WriteLine("Tarefa marcada como concluída!");
-            SalvarTarefas(tarefas.ToArray());
-        }
-        else
-        {
-            Console.WriteLine("Número de tarefa inválido.");
-        }
+        tarefas.RemoveAt(index - 1);
+        Salvar();
+    }
+
+    public void CompletarTarefa(int index)
+    {
+        tarefas[index - 1].Concluida = true;
+        Salvar();
+    }
+
+    private void Salvar()
+    {
+        string json = JsonSerializer.Serialize(tarefas);
+        File.WriteAllText(arquivoTarefas, json);
     }
 }
