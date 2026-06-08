@@ -4,13 +4,13 @@ using System.Text.Json;
 
 public class TarefaService
 {
-    internal Tarefa[] Tarefas { get; private set; }
+    private readonly string arquivoTarefas;
     private List<Tarefa> tarefas;
 
-    public TarefaService()
+    public TarefaService(string arquivoTarefas)
     {
+        this.arquivoTarefas = arquivoTarefas;
         tarefas = new List<Tarefa>();
-        Tarefas = tarefas.ToArray();
     }
 
     public void AdicionarTarefa(string descricao)
@@ -23,7 +23,7 @@ public class TarefaService
     private void SalvarTarefas(Tarefa[] tarefas)
     {
         string json = JsonSerializer.Serialize(tarefas);
-        File.WriteAllText("tarefas.json", json);
+        File.WriteAllText(arquivoTarefas, json);
     }
 
     public void ListarTarefas()
@@ -50,7 +50,7 @@ public class TarefaService
     {
         if (numeroTarefa > 0 && numeroTarefa <= tarefas.Count && tarefas[numeroTarefa - 1] != null)
         {
-            tarefas[numeroTarefa - 1] = null;
+            tarefas.RemoveAt(numeroTarefa - 1);
             Console.WriteLine("Tarefa removida com sucesso!");
             SalvarTarefas(tarefas.ToArray());
         }
