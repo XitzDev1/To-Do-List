@@ -4,10 +4,11 @@ public class Login
     public string Email { get; set; }
     public string Senha { get; set; }
 
-    public Login(string email, string senha)
+    public Login(string email, string senha, string nome = "")
     {
         Email = email;
         Senha = senha;
+        Nome = nome;
     }
 
     public bool ValidarLogin(List<Login> usuarios)
