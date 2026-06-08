@@ -23,7 +23,6 @@ C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.csproj.AssemblyReference.cache
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.csproj.Up2Date
-C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\tarefas.json
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\bin\Debug\net10.0\Conceitos.staticwebassets.endpoints.json
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\rpswa.dswa.cache.json
 C:\Users\Jéssica Mary\OneDrive\Documentos\CSharpEstudos\Conceitos\obj\Debug\net10.0\Conceitos.MvcApplicationPartsAssemblyInfo.cache
