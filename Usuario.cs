@@ -10,9 +10,4 @@ public class Login
         Senha = senha;
         Nome = nome;
     }
-
-    public bool ValidarLogin(List<Login> usuarios)
-    {
-        return usuarios.Any(u => u.Email == Email && u.Senha == Senha);
-    }
 }
