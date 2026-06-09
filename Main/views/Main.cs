@@ -45,6 +45,21 @@ public static class ViewMain
                     Console.WriteLine("Número inválido.");
                 }
             }
+
+            else if (comando == "edit")
+            {
+                Console.Write("Número da tarefa: ");
+                if (int.TryParse(readLine.Readline(), out int numero))
+                {
+                    Console.Write("Nova descrição: ");
+                    string novaDescricao = readLine.Readline() ?? "";
+                    tarefaService.EditarTarefa(numero, novaDescricao);
+                }
+                else
+                {
+                    Console.WriteLine("Número inválido.");
+                }
+            }
             else if (comando == "help")
             {
                 Console.WriteLine("add");
@@ -52,6 +67,7 @@ public static class ViewMain
                 Console.WriteLine("remove");
                 Console.WriteLine("complete");
                 Console.WriteLine("exit");
+                Console.WriteLine("edit");
             }
             else if (comando == "exit")
             {

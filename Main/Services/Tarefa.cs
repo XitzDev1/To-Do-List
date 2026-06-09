@@ -73,6 +73,24 @@ public class TarefaService
         Salvar();
     }
 
+    public void EditarTarefa(int index, string novaDescricao)
+    {
+        if (index < 1 || index > tarefas.Count)
+        {
+            Console.WriteLine("Número de tarefa inválido.");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(novaDescricao))
+        {
+            Console.WriteLine("Descrição vazia não é permitida.");
+            return;
+        }
+
+        tarefas[index - 1].Descricao = novaDescricao;
+        Salvar();
+    }
+
     private void Salvar()
     {
         string json = JsonSerializer.Serialize(tarefas, new JsonSerializerOptions { WriteIndented = true });
