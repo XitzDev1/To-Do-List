@@ -1,8 +1,12 @@
+namespace LoginService;
+
 using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.Json;
+using TarefaService;
+using LoginModel;
 
 public static class LoginView
 {

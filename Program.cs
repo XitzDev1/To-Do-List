@@ -1,4 +1,6 @@
-﻿using System;
+﻿namespace Program;
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;

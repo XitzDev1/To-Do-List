@@ -1,4 +1,7 @@
+namespace MainView;
+
 using System;
+using TarefaService;
 
 public static class ViewMain
 {

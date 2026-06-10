@@ -1,5 +1,7 @@
-using System.Text.Json;
+namespace TarefaService;
 
+using System.Text.Json;
+using TarefaClasse;
 public class TarefaService
 {
     private readonly string arquivoTarefas;

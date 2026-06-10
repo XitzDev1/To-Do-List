@@ -1,3 +1,7 @@
+namespace ValidarLogin;
+
+using LoginModel;
+
 public class ValidarLogin
 {
     public bool ValidarLogins(List<Login> usuarios, string email, string senha)
